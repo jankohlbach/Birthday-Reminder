@@ -79,6 +79,8 @@
       this.nameInput = this.form.querySelector('#name');
       this.infoInput = this.form.querySelector('#info');
       this.list = document.querySelector('.list');
+      this.listCurrent = this.list.querySelector('.current-year');
+      this.listNext = this.list.querySelector('.next-year');
     }
 
     initYearInput() {
@@ -136,21 +138,28 @@
       this.birthdays = Birthday.getLocalStorage(this.LOCAL_STORAGE_KEY);
 
       const date = new Date();
+      const currentDay = date.getDate();
+      const currentMonth = date.getMonth() + 1;
       const currentYear = date.getFullYear();
 
-      this.list.innerHTML = '';
-      let month;
+      // eslint-disable-next-line no-param-reassign
+      [this.listCurrent, this.listNext].forEach((list) => { list.innerHTML = ''; });
+      let month = null;
 
       this.birthdays.forEach((birthday) => {
-        if (month !== birthday.month) {
-          const monthElement = document.createElement('div');
-          monthElement.classList.add('month');
-          monthElement.innerHTML = `
-            <span class="month">${this.MONTH_NAMES[parseInt(birthday.month, 10) - 1]}</span>
-            <span class="year">${currentYear}</span>
-          `;
-          this.list.appendChild(monthElement);
-        }
+        const birthdayDay = parseInt(birthday.day, 10);
+        const birthdayMonth = parseInt(birthday.month, 10);
+
+        const monthElement = document.createElement('div');
+        monthElement.classList.add('month');
+        monthElement.innerHTML = `
+          <span class="month"><em>
+            ${this.MONTH_NAMES[parseInt(birthday.month, 10) - 1]}
+          </em></span>
+          <span class="year"><em>
+            ${birthdayMonth > currentMonth || (birthdayMonth === currentMonth && birthdayDay > currentDay) ? currentYear : currentYear + 1}
+          </em></span>
+        `;
 
         const listElement = document.createElement('div');
         listElement.classList.add('list-item');
@@ -161,9 +170,29 @@
           <button class="edit">Edit</button>
           <button class="delete">Delete</button>
         `;
-        this.list.appendChild(listElement);
 
-        ({ month } = birthday);
+        if (birthdayMonth < currentMonth) {
+          this.listNext.append(birthdayMonth === month
+            ? listElement
+            : monthElement, listElement);
+        } else if (birthdayMonth > currentMonth) {
+          this.listCurrent.append(birthdayMonth === month
+            ? listElement
+            : monthElement, listElement);
+        } else if (birthdayDay < currentDay) {
+          this.listNext.append(birthdayMonth === month
+            ? listElement
+            : monthElement, listElement);
+        } else if (birthdayMonth === month) {
+          if (this.listCurrent.innerHTML === '') {
+            this.listCurrent.append(monthElement, listElement);
+          }
+          this.listCurrent.append(listElement);
+        } else {
+          this.listCurrent.append(monthElement, listElement);
+        }
+
+        month = birthdayMonth;
       });
     }
 
