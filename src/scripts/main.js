@@ -227,6 +227,8 @@
     }
   }
 
-  // eslint-disable-next-line no-unused-vars
-  const birthday = new Birthday();
+  window.addEventListener('load', () => {
+    // eslint-disable-next-line no-unused-vars
+    const birthday = new Birthday();
+  });
 }).call(this);
