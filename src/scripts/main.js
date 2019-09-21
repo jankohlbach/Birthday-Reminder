@@ -150,25 +150,22 @@
         const birthdayDay = parseInt(birthday.day, 10);
         const birthdayMonth = parseInt(birthday.month, 10);
 
-        const monthElement = document.createElement('div');
-        monthElement.classList.add('month');
+        const monthElement = document.createElement('h3');
+        monthElement.classList.add('date');
         monthElement.innerHTML = `
-          <span class="month"><em>
-            ${this.MONTH_NAMES[parseInt(birthday.month, 10) - 1]}
-          </em></span>
-          <span class="year"><em>
-            ${birthdayMonth > currentMonth || (birthdayMonth === currentMonth && birthdayDay > currentDay) ? currentYear : currentYear + 1}
-          </em></span>
+          <span class="month">${this.MONTH_NAMES[parseInt(birthday.month, 10) - 1]}</span>
+          <span class="year">${birthdayMonth > currentMonth || (birthdayMonth === currentMonth && birthdayDay >= currentDay) ? currentYear : currentYear + 1}</span>
         `;
 
         const listElement = document.createElement('div');
         listElement.classList.add('list-item');
         listElement.id = birthday.hash;
         listElement.innerHTML = `
-          <span class="date">${birthday.day}</span>
+          <span class="day">${birthday.day}</span>
           <span class="name">${birthday.name}</span>
-          <button class="edit">Edit</button>
-          <button class="delete">Delete</button>
+          <div class="buttons">
+            <button class="buttons-edit"><span class="invisible">Edit</span></button><button class="buttons-delete"><span class="invisible">Delete</span></button>
+          </div>
         `;
 
         if (birthdayMonth < currentMonth) {
@@ -215,7 +212,7 @@
 
       const button = e.target;
 
-      if (button.classList.contains('delete')) {
+      if (button.classList.contains('buttons-delete')) {
         const idToDelete = button.parentNode.id;
         const indexToDelete = this.birthdays.findIndex(birthday => birthday.hash === idToDelete);
         this.birthdays.splice(indexToDelete, 1);

@@ -1,0 +1,18 @@
+header {
+  padding: 1.2rem;
+  background-color: $color-secondary-darker;
+
+  h1 {
+    font-size: 2.4rem;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 7rem;
+      height: .3rem;
+      margin-top: .3rem;
+      background-color: $color-primary;
+      transform: translateX(-.5rem);
+    }
+  }
+}

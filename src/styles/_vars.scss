@@ -1,34 +1,44 @@
 // colors
-$color-font: #000;
-$color-background: #fff;
+$color-black: #000;
+$color-white: #fff;
 
-$color-brand-primary: #0066ff;
-$color-brand-secondary: #66ff00;
-$color-brand-tertiary: #ff0066;
+$color-primary: #ea2340;
+$color-secondary: #1c1d24;
+$color-secondary-darker: #16171d;
+$color-tertiary: #f5eeee;
+
+$color-font: $color-tertiary;
+$color-background: $color-secondary;
 
 // golden ratio
 $golden-ratio: 1.618;
 
 // fonts
-$base-font: sans-serif;
+$base-font: 'Raleway', sans-serif;
 
 $base-font-size: 10px;
 $font-size: 2rem;
 
-$font-size-h1: 5rem;
-$font-size-h2: 4rem;
-$font-size-h3: 3.5rem;
-$font-size-h4: 3rem;
-$font-size-h5: 2.5rem;
+$font-size-h1: 2.5rem;
+$font-size-h2: 2.2rem;
+$font-size-h3: 2rem;
+$font-size-h4: 2rem;
+$font-size-h5: 2rem;
 $font-size-h6: 2rem;
 
+// $font-weight-thin: 100;
+// $font-weight-extralight: 200;
 $font-weight-light: 300;
 $font-weight: 400;
+// $font-weight-medium: 500;
 $font-weight-semibold: 600;
 $font-weight-bold: 700;
+// $font-weight-extrabold: 800;
+// $font-weight-black: 900;
 
 // dimensions
 $content-width: 1290px;
+$page-margin: 2rem;
 $content-margin: 3rem;
 $gutter-width: 3rem;
 

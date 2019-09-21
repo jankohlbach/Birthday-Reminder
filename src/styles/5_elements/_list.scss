@@ -1,0 +1,8 @@
+.list {
+  margin-top: 2.8rem;
+
+  .list-item + .date,
+  .current-year + .next-year {
+    margin-top: 1.6rem;
+  }
+}
