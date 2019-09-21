@@ -213,10 +213,16 @@
       const button = e.target;
 
       if (button.classList.contains('buttons-delete')) {
-        const idToDelete = button.parentNode.id;
-        const indexToDelete = this.birthdays.findIndex(birthday => birthday.hash === idToDelete);
-        this.birthdays.splice(indexToDelete, 1);
-        this.updateAll();
+        const idToDelete = button.parentNode.parentNode.id;
+
+        // check if id is there, otherwise don't delete wrong elements
+        if (idToDelete !== '') {
+          const indexToDelete = this.birthdays.findIndex(birthday => birthday.hash === idToDelete);
+          this.birthdays.splice(indexToDelete, 1);
+          this.updateAll();
+        } else {
+          console.error('Could not read ID to delete.');
+        }
       }
     }
   }
