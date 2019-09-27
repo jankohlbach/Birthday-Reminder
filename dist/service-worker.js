@@ -1,8 +1,7 @@
 /* eslint-disable no-restricted-globals */
 // update this name every time a cached file changes
 // the new service-worker will be installed and activated
-const appCache = 'app-cache-v1';
-const dataCache = 'data-cache-v1';
+const appCache = 'app-cache-v2';
 const urlsToCache = [
   './',
   './index.html',
@@ -39,7 +38,7 @@ self.addEventListener('activate', (e) => {
       .then(keyList => Promise
         .all(keyList
           .map((key) => {
-            if (key !== appCache && key !== dataCache) {
+            if (key !== appCache) {
               // eslint-disable-next-line no-console
               console.log('Removing old cache', key);
               return caches.delete(key);
