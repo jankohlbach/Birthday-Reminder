@@ -1,5 +1,8 @@
 header {
-  padding: 1.2rem;
+  position: sticky;
+  top: 0;
+  z-index: $z-index-header;
+  padding: 1.2rem 0;
   background-color: $color-secondary-darker;
 
   h1 {

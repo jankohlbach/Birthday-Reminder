@@ -20,6 +20,15 @@ body {
   font-size: $base-font-size;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex-grow: 1;
+}
+
 ::selection {
   background-color: $color-font;
   color: $color-background;

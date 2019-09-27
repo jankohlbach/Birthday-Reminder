@@ -28,6 +28,11 @@
       background-color: transparent;
       -webkit-tap-highlight-color: rgba($color-primary, .2);
 
+      // TODO: temporary until edit functionality is done
+      &.buttons-edit {
+        display: none;
+      }
+
       &::before {
         display: inline-block;
         width: 3rem;
