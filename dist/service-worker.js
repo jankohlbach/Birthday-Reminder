@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-globals */
 // update this name every time a cached file changes
 // the new service-worker will be installed and activated
-const appCache = 'app-cache-v2';
+const appCache = 'app-cache-v1';
 const urlsToCache = [
   './',
   './index.html',
