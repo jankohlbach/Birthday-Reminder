@@ -7,27 +7,28 @@
   (() => {
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/dist/service-worker.js').then((reg) => {
-        // navigator.serviceWorker.register('/service-worker.js').then((reg) => {
-          // eslint-disable-next-line no-console
-          console.log('Successfully registered service worker', reg);
-        }).catch((err) => {
-          // eslint-disable-next-line no-console
-          console.warn('Error whilst registering service worker', err);
-        });
+        // navigator.serviceWorker.register('/dist/service-worker.js')
+        navigator.serviceWorker.register('/service-worker.js')
+          .then((reg) => {
+            // eslint-disable-next-line no-console
+            console.log('Successfully registered service worker', reg);
+          }).catch((err) => {
+            // eslint-disable-next-line no-console
+            console.warn('Error whilst registering service worker', err);
+          });
       });
     }
   })();
 
   /**
    *
-   * BIRTHDAY-CLASS
+   * EVENT-CLASS
    *
    */
   (() => {
-    class Birthday {
+    class Event {
       constructor() {
-        this.birthdays = [];
+        this.events = [];
 
         this.CACHE_STORAGE_KEY = 'data-cache';
 
@@ -44,8 +45,8 @@
 
         dbRequest.onsuccess = () => {
           const db = dbRequest.result;
-          const transaction = db.transaction('birthdays', 'readwrite');
-          const objectStore = transaction.objectStore('birthdays');
+          const transaction = db.transaction('events', 'readwrite');
+          const objectStore = transaction.objectStore('events');
 
           objectStore.put(entry);
         };
@@ -56,8 +57,8 @@
 
         dbRequest.onsuccess = () => {
           const db = dbRequest.result;
-          const transaction = db.transaction('birthdays', 'readwrite');
-          const objectStore = transaction.objectStore('birthdays');
+          const transaction = db.transaction('events', 'readwrite');
+          const objectStore = transaction.objectStore('events');
 
           objectStore.delete(hash);
         };
@@ -169,14 +170,14 @@
         dbRequest.onupgradeneeded = () => {
           const db = dbRequest.result;
 
-          if (!db.objectStoreNames.contains('birthdays')) {
-            const birthdayOS = db.createObjectStore('birthdays', { keyPath: 'hash' });
+          if (!db.objectStoreNames.contains('events')) {
+            const eventOS = db.createObjectStore('events', { keyPath: 'hash' });
 
-            birthdayOS.createIndex('day', 'day', { unique: false });
-            birthdayOS.createIndex('month', 'month', { unique: false });
-            birthdayOS.createIndex('year', 'year', { unique: false });
-            birthdayOS.createIndex('name', 'name', { unique: false });
-            birthdayOS.createIndex('info', 'info', { unique: false });
+            eventOS.createIndex('day', 'day', { unique: false });
+            eventOS.createIndex('month', 'month', { unique: false });
+            eventOS.createIndex('year', 'year', { unique: false });
+            eventOS.createIndex('name', 'name', { unique: false });
+            eventOS.createIndex('info', 'info', { unique: false });
           }
         };
       }
@@ -200,7 +201,7 @@
           year: this.yearInput.value,
           name: this.nameInput.value,
           info: this.infoInput.value,
-          hash: Birthday.generateHash(),
+          hash: Event.generateHash(),
         };
       }
 
@@ -209,20 +210,20 @@
 
         dbRequest.onsuccess = () => {
           const db = dbRequest.result;
-          const transaction = db.transaction('birthdays', 'readonly');
-          const objectStore = transaction.objectStore('birthdays');
+          const transaction = db.transaction('events', 'readonly');
+          const objectStore = transaction.objectStore('events');
 
           const osRequest = objectStore.getAll();
 
           osRequest.onsuccess = () => {
-            this.birthdays = osRequest.result;
+            this.events = osRequest.result;
             this.displayList();
           };
         };
       }
 
       displayList() {
-        Birthday.sortList(this.birthdays);
+        Event.sortList(this.events);
 
         const date = new Date();
         const currentDay = date.getDate();
@@ -233,41 +234,41 @@
         [this.listCurrent, this.listNext].forEach((list) => { list.innerHTML = ''; });
         let month = null;
 
-        this.birthdays.forEach((birthday) => {
-          const birthdayDay = parseInt(birthday.day, 10);
-          const birthdayMonth = parseInt(birthday.month, 10);
+        this.events.forEach((event) => {
+          const eventDay = parseInt(event.day, 10);
+          const eventMonth = parseInt(event.month, 10);
 
           const monthElement = document.createElement('h3');
           monthElement.classList.add('date');
           monthElement.innerHTML = `
-            <span class="month">${this.MONTH_NAMES[parseInt(birthday.month, 10) - 1]}</span>
-            <span class="year">${birthdayMonth > currentMonth || (birthdayMonth === currentMonth && birthdayDay >= currentDay) ? currentYear : currentYear + 1}</span>
+            <span class="month">${this.MONTH_NAMES[parseInt(event.month, 10) - 1]}</span>
+            <span class="year">${eventMonth > currentMonth || (eventMonth === currentMonth && eventDay >= currentDay) ? currentYear : currentYear + 1}</span>
           `;
 
           const listElement = document.createElement('div');
           listElement.classList.add('list-item');
-          listElement.id = birthday.hash;
+          listElement.id = event.hash;
           listElement.innerHTML = `
-            <span class="day">${birthday.day}</span>
-            <span class="name">${birthday.name}</span>
+            <span class="day">${event.day}</span>
+            <span class="name">${event.name}</span>
             <div class="buttons">
               <button class="buttons-edit"><span class="invisible">Edit</span></button><button class="buttons-delete"><span class="invisible">Delete</span></button>
             </div>
           `;
 
-          if (birthdayMonth < currentMonth) {
-            this.listNext.append(birthdayMonth === month
+          if (eventMonth < currentMonth) {
+            this.listNext.append(eventMonth === month
               ? listElement
               : monthElement, listElement);
-          } else if (birthdayMonth > currentMonth) {
-            this.listCurrent.append(birthdayMonth === month
+          } else if (eventMonth > currentMonth) {
+            this.listCurrent.append(eventMonth === month
               ? listElement
               : monthElement, listElement);
-          } else if (birthdayDay < currentDay) {
-            this.listNext.append(birthdayMonth === month
+          } else if (eventDay < currentDay) {
+            this.listNext.append(eventMonth === month
               ? listElement
               : monthElement, listElement);
-          } else if (birthdayMonth === month) {
+          } else if (eventMonth === month) {
             if (this.listCurrent.innerHTML === '') {
               this.listCurrent.append(monthElement, listElement);
             }
@@ -276,13 +277,13 @@
             this.listCurrent.append(monthElement, listElement);
           }
 
-          month = birthdayMonth;
+          month = eventMonth;
         });
       }
 
       handleSubmit(e) {
         const newEntry = this.getFormData(e);
-        this.birthdays.push(newEntry);
+        this.events.push(newEntry);
         this.setCacheStorage(newEntry);
         this.updateList();
         this.form.reset();
@@ -299,9 +300,9 @@
 
           // check if id is there, otherwise don't delete wrong elements
           if (hashToDelete !== '') {
-            const indexToDelete = this.birthdays
-              .findIndex(birthday => birthday.hash === hashToDelete);
-            this.birthdays.splice(indexToDelete, 1);
+            const indexToDelete = this.events
+              .findIndex(event => event.hash === hashToDelete);
+            this.events.splice(indexToDelete, 1);
             this.deleteElementInCache(hashToDelete);
             this.updateList();
           }
@@ -311,7 +312,7 @@
 
     window.addEventListener('load', () => {
       // eslint-disable-next-line no-unused-vars
-      const birthday = new Birthday();
+      const event = new Event();
     });
   })();
 })();

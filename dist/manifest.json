@@ -1,7 +1,7 @@
 {
-  "short_name": "Birthday Reminder",
-  "name": "Birthday Reminder",
-  "description": "A place to save the special day of your loved ones.",
+  "short_name": "b-reminded",
+  "name": "b-reminded",
+  "description": "A place to save your birthdays and other special events.",
   "icons": [
       {
           "src": "favicon/favicon-32x32.png",

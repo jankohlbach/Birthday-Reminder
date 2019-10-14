@@ -46,8 +46,6 @@ self.addEventListener('activate', (e) => {
             return 1;
           }))),
   );
-
-  self.clients.claim();
 });
 
 // fetch event
