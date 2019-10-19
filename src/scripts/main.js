@@ -12,9 +12,10 @@
           .then((reg) => {
             // eslint-disable-next-line no-console
             console.log('Successfully registered service worker', reg);
-          }).catch((err) => {
+          })
+          .catch((err) => {
             // eslint-disable-next-line no-console
-            console.warn('Error whilst registering service worker', err);
+            console.error('Error whilst registering service worker', err);
           });
       });
     }
@@ -245,16 +246,33 @@
             <span class="year">${eventMonth > currentMonth || (eventMonth === currentMonth && eventDay >= currentDay) ? currentYear : currentYear + 1}</span>
           `;
 
+          /* eslint-disable no-nested-ternary, indent */
           const listElement = document.createElement('div');
           listElement.classList.add('list-item');
+          if (eventMonth === currentMonth && eventDay === currentDay) {
+            listElement.classList.add('today');
+          }
           listElement.id = event.hash;
           listElement.innerHTML = `
             <span class="day">${event.day}</span>
-            <span class="name">${event.name}</span>
+            <div class="container">
+              <span class="name">${event.name}</span>
+              ${event.year !== ''
+                ? `<span class="age">\
+                    ${(eventMonth > currentMonth || (eventMonth === currentMonth && eventDay >= currentDay))
+                      ? (eventDay === currentDay
+                        ? (`turns ${currentYear - event.year}`)
+                        : (`age: ${currentYear - event.year - 1}`))
+                      : (`age: ${currentYear - event.year}`)}
+                  </span>`
+                : ''
+              }
+            </div>
             <div class="buttons">
               <button class="buttons-edit"><span class="invisible">Edit</span></button><button class="buttons-delete"><span class="invisible">Delete</span></button>
             </div>
           `;
+          /* eslint-enable no-nested-ternary, indent */
 
           if (eventMonth < currentMonth) {
             this.listNext.append(eventMonth === month
