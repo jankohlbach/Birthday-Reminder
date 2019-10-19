@@ -5,6 +5,15 @@ All notable changes to the "the-best-theme" extension will be documented in this
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+## [1.2.0] - 2019-10-19
+### Added
+- add edit functionality, now entries are fully editable afterwards
+
+### Changed
+
+### Removed
+
+
 ## [1.1.0] - 2019-10-19
 ### Added
 - display current age when year is given

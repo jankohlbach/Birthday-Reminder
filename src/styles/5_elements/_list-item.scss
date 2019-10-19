@@ -7,14 +7,6 @@
   background-color: $color-tertiary;
   color: $color-secondary;
 
-  &.today {
-    transform: scale(1.07);
-
-    .age {
-      font-weight: $font-weight-bold;
-    }
-  }
-
   .day {
     margin-right: .8rem;
     color: $color-primary;
@@ -47,11 +39,6 @@
       background-color: transparent;
       -webkit-tap-highlight-color: rgba($color-primary, .2);
 
-      // TODO: temporary until edit functionality is done
-      &.buttons-edit {
-        display: none;
-      }
-
       &::before {
         display: inline-block;
         width: 3rem;
@@ -73,6 +60,14 @@
       &::before {
         content: url('../img/icon-delete.svg');
       }
+    }
+  }
+
+  &.today {
+    transform: scale(1.07);
+
+    .age {
+      font-weight: $font-weight-bold;
     }
   }
 }

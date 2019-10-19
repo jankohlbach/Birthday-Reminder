@@ -21,6 +21,29 @@
     }
   })();
 
+  // scroll-to-top function
+  const scrollToTop = function scrollToTop() {
+    const start = window.pageYOffset;
+    const startTime = 'now' in window.performance ? performance.now() : new Date().getTime();
+    const endPoint = 0;
+    const duration = 600;
+
+    const scroll = function scroll() {
+      const now = 'now' in window.performance ? performance.now() : new Date().getTime();
+      const time = Math.min(1, (now - startTime) / duration);
+      const timeFunction = time < 0.5 ? 2 * time * time : -1 + (4 - 2 * time) * time;
+      window.scroll(0, Math.ceil(timeFunction * (endPoint - start) + start));
+
+      if (window.pageYOffset === endPoint) {
+        return;
+      }
+
+      requestAnimationFrame(scroll);
+    };
+
+    scroll();
+  };
+
   /**
    *
    * EVENT-CLASS
@@ -125,6 +148,7 @@
         this.yearInput = this.form.querySelector('#year');
         this.nameInput = this.form.querySelector('#name');
         this.infoInput = this.form.querySelector('#info');
+        this.submit = this.form.querySelector('button');
         this.list = document.querySelector('.list');
         this.listCurrent = this.list.querySelector('.current-year');
         this.listNext = this.list.querySelector('.next-year');
@@ -307,6 +331,30 @@
         this.form.reset();
       }
 
+      changeData(hashToChange) {
+        const headline = this.form.previousElementSibling;
+        const headlineReset = headline.textContent;
+        const submitReset = this.submit.textContent;
+        const indexToChange = this.events.findIndex(event => event.hash === hashToChange);
+        const elementToChange = this.events[indexToChange];
+        headline.textContent = 'Change entry';
+        this.submit.textContent = 'Change';
+        this.dayInput.value = elementToChange.day;
+        this.monthInput.value = elementToChange.month;
+        this.yearInput.value = elementToChange.year;
+        this.nameInput.value = elementToChange.name;
+        this.infoInput.value = elementToChange.info;
+        scrollToTop();
+        this.events.splice(indexToChange, 1);
+        this.deleteElementInCache(hashToChange);
+
+        const resetFormText = this.form.addEventListener('submit', () => {
+          headline.textContent = headlineReset;
+          this.submit.textContent = submitReset;
+          this.form.removeEventListener('submit', resetFormText);
+        });
+      }
+
       // button click
       handleButtonClick(e) {
         if (e.target.tagName.toLowerCase() !== 'button') return;
@@ -324,6 +372,9 @@
             this.deleteElementInCache(hashToDelete);
             this.updateList();
           }
+        } else if (button.classList.contains('buttons-edit')) {
+          const hashToChange = button.parentNode.parentNode.id;
+          this.changeData(hashToChange);
         }
       }
     }
