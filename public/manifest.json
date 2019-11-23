@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "b-reminded",
+  "name": "b-reminded",
+  "description": "A place to save your birthdays and other special events.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,18 +9,39 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
+      "scr": "favicon/apple-touch-icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
     },
     {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "scr": "favicon/apple-touch-icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "scr": "favicon/favicon-196x196.png",
+      "sizes": "196x196",
+      "type": "image/png"
+    },
+    {
+      "scr": "favicon/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "scr": "favicon/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "scr": "favicon/mstile-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "orientation": "portrait",
+  "theme_color": "#16171d",
+  "background_color": "#16171d"
 }
