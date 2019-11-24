@@ -1,5 +1,4 @@
-// scroll-to-top function
-const scrollToTop = function scrollToTop() {
+const scrollToTop = () => {
   const start = window.pageYOffset;
   const startTime = 'now' in window.performance ? performance.now() : new Date().getTime();
   const endPoint = 0;

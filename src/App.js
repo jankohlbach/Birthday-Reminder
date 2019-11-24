@@ -6,15 +6,7 @@ import Form from './Components/Form';
 import ListView from './Components/ListView';
 
 function App() {
-  const data = [
-    {
-      day: '19',
-      month: '01',
-      year: '1998',
-      name: 'Me',
-      info: '',
-      hash: '157452836880278',
-    },
+  const events = [
     {
       day: '04',
       month: '02',
@@ -22,6 +14,14 @@ function App() {
       name: 'Person 1',
       info: '',
       hash: '157452838056285',
+    },
+    {
+      day: '19',
+      month: '01',
+      year: '1998',
+      name: 'Me',
+      info: '',
+      hash: '157452836880278',
     },
     {
       day: '20',
@@ -38,6 +38,14 @@ function App() {
       name: 'Random',
       info: '',
       hash: '157552838056288',
+    },
+    {
+      day: '26',
+      month: '02',
+      year: '1978',
+      name: 'Person 1',
+      info: '',
+      hash: '157472838056285',
     },
     {
       day: '24',
@@ -64,7 +72,7 @@ function App() {
         <ContentWrap>
           <h2>Add new entry</h2>
           <Form />
-          <ListView data={data} />
+          <ListView events={events} />
         </ContentWrap>
       </main>
       <Footer />

@@ -1,8 +1,13 @@
 .list {
   margin-top: 2.8rem;
 
-  .list-item + .date,
-  .current-year + .next-year {
+  .list-item + .date {
     margin-top: 1.6rem;
+  }
+
+  h3 {
+    .month + .year {
+      margin-left: 1rem;
+    }
   }
 }
