@@ -4,11 +4,11 @@
   font-weight: 400;
   font-family: 'Raleway';
   font-display: swap;
-  src: url('../fonts/raleway-v12-latin-regular.ttf') format('truetype');
+  src: url('./res/fonts/raleway-v12-latin-regular.ttf') format('truetype');
   src: local('Raleway'),
     local('Raleway-Regular'),
-    url('../fonts/raleway-v12-latin-regular.woff2') format('woff2'),
-    url('../fonts/raleway-v12-latin-regular.ttf') format('truetype');
+    url('./res/fonts/raleway-v12-latin-regular.woff2') format('woff2'),
+    url('./res/fonts/raleway-v12-latin-regular.ttf') format('truetype');
 }
 
 /* raleway-italic - latin */
@@ -17,11 +17,11 @@
   font-weight: 400;
   font-family: 'Raleway';
   font-display: swap;
-  src: url('../fonts/raleway-v12-latin-italic.ttf') format('truetype');
+  src: url('./res/fonts/raleway-v12-latin-italic.ttf') format('truetype');
   src: local('Raleway Italic'),
     local('Raleway-Italic'),
-    url('../fonts/raleway-v12-latin-italic.woff2') format('woff2'),
-    url('../fonts/raleway-v12-latin-italic.ttf') format('truetype');
+    url('./res/fonts/raleway-v12-latin-italic.woff2') format('woff2'),
+    url('./res/fonts/raleway-v12-latin-italic.ttf') format('truetype');
 }
 
 /* raleway-800 - latin */
@@ -30,11 +30,11 @@
   font-weight: 800;
   font-family: 'Raleway';
   font-display: swap;
-  src: url('../fonts/raleway-v12-latin-800.ttf') format('truetype');
+  src: url('./res/fonts/raleway-v12-latin-800.ttf') format('truetype');
   src: local('Raleway ExtraBold'),
     local('Raleway-ExtraBold'),
-    url('../fonts/raleway-v12-latin-800.woff2') format('woff2'),
-    url('../fonts/raleway-v12-latin-800.ttf') format('truetype');
+    url('./res/fonts/raleway-v12-latin-800.woff2') format('woff2'),
+    url('./res/fonts/raleway-v12-latin-800.ttf') format('truetype');
 }
 
 /* raleway-800italic - latin */
@@ -43,9 +43,9 @@
   font-weight: 800;
   font-family: 'Raleway';
   font-display: swap;
-  src: url('../fonts/raleway-v12-latin-800italic.ttf') format('truetype');
+  src: url('./res/fonts/raleway-v12-latin-800italic.ttf') format('truetype');
   src: local('Raleway ExtraBold Italic'),
     local('Raleway-ExtraBoldItalic'),
-    url('../fonts/raleway-v12-latin-800italic.woff2') format('woff2'),
-    url('../fonts/raleway-v12-latin-800italic.ttf') format('truetype');
+    url('./res/fonts/raleway-v12-latin-800italic.woff2') format('woff2'),
+    url('./res/fonts/raleway-v12-latin-800italic.ttf') format('truetype');
 }

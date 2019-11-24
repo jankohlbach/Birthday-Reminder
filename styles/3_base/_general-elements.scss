@@ -19,10 +19,15 @@ body {
 }
 
 body {
-  display: flex;
-  flex-direction: column;
   overflow: hidden;
   overflow-y: auto;
+}
+
+// stylelint-disable-next-line selector-max-specificity
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 }
 
 main {

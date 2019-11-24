@@ -52,13 +52,13 @@
 
     &-edit {
       &::before {
-        content: url('../img/icon-edit.svg');
+        content: url('./res/img/icon-edit.svg');
       }
     }
 
     &-delete {
       &::before {
-        content: url('../img/icon-delete.svg');
+        content: url('./res/img/icon-delete.svg');
       }
     }
   }

@@ -30,7 +30,7 @@ form {
     }
 
     &::after {
-      content: url('../img/icon-chevron-down.svg');
+      content: url('./res/img/icon-chevron-down.svg');
       position: absolute;
       top: 50%;
       right: .5rem;
