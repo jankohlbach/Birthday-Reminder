@@ -1,21 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Select(props) {
-  const { name, options, required } = props;
+class Select extends React.Component {
+  handleChange = (e) => {
+    const { onSelectChange } = this.props;
+    onSelectChange(e.target.value);
+  }
 
-  return (
-    <div className="select-wrapper">
-      <select id={name} name={name} value="00" required={required}>
-        {options}
-      </select>
-    </div>
-  );
+  render() {
+    const {
+      name,
+      options,
+      value,
+      required,
+    } = this.props;
+
+    return (
+      <div className="select-wrapper">
+        <select
+          id={name}
+          name={name}
+          value={value}
+          onChange={this.handleChange}
+          required={required}
+        >
+          {options}
+        </select>
+      </div>
+    );
+  }
 }
 
 Select.propTypes = {
   name: PropTypes.string.isRequired,
   options: PropTypes.element.isRequired,
+  value: PropTypes.string.isRequired,
+  onSelectChange: PropTypes.func.isRequired,
   required: PropTypes.bool,
 };
 

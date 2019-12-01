@@ -21,6 +21,18 @@ form {
     font-size: 1.6rem;
   }
 
+  select:invalid {
+    box-shadow: 0 0 0 1.5px $color-primary;
+  }
+
+  select:not(:focus):invalid {
+    box-shadow: none;
+  }
+
+  input:invalid:not(:placeholder-shown) {
+    box-shadow: 0 0 0 1.5px $color-primary;
+  }
+
   .select-wrapper {
     position: relative;
     flex-grow: 1;

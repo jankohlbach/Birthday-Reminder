@@ -2,7 +2,7 @@ import React from 'react';
 
 const days = (
   <>
-    <option key="option-day-00" value="00" disabled>Day</option>
+    <option key="option-day-00" value="" disabled hidden>Day</option>
     <option key="option-day-01" value="01">01</option>
     <option key="option-day-02" value="02">02</option>
     <option key="option-day-03" value="03">03</option>
@@ -39,7 +39,7 @@ const days = (
 
 const months = (
   <>
-    <option key="option-month-00" value="00" disabled>Month</option>
+    <option key="option-month-00" value="" disabled hidden>Month</option>
     <option key="option-month-01" value="01">01</option>
     <option key="option-month-02" value="02">02</option>
     <option key="option-month-03" value="03">03</option>
@@ -64,7 +64,7 @@ for (let i = 0; i <= 100; i += 1) {
 
 const years = (
   <>
-    <option key="option-year-00" value="00" disabled>Year</option>
+    <option key="option-year-00" value="" disabled>Year</option>
     {options}
   </>
 );

@@ -1,18 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Input(props) {
-  const { name, placeholder, required } = props;
+class Input extends React.Component {
+  handleChange = (e) => {
+    const { onInputChange } = this.props;
+    onInputChange(e.target.value);
+  }
 
-  return (
-    <div className={`input ${name}`}>
-      <input id={name} type="text" name={name} placeholder={placeholder} required={required} />
-    </div>
-  );
+  render() {
+    const {
+      name,
+      value,
+      placeholder,
+      required,
+    } = this.props;
+
+    return (
+      <div className={`input ${name}`}>
+        <input type="text" id={name} name={name} value={value} onChange={this.handleChange} placeholder={placeholder} required={required} />
+      </div>
+    );
+  }
 }
 
 Input.propTypes = {
   name: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onInputChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string.isRequired,
   required: PropTypes.bool,
 };
