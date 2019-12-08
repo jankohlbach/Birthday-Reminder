@@ -33,6 +33,10 @@ form {
     box-shadow: 0 0 0 1.5px $color-primary;
   }
 
+  input:not(:focus):invalid {
+    box-shadow: none;
+  }
+
   .select-wrapper {
     position: relative;
     flex-grow: 1;
