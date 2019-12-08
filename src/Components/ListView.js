@@ -12,6 +12,7 @@ import {
 function ListView(props) {
   const { events } = props;
   let headline;
+  let prevDay = null;
   let prevMonth = null;
 
   sortList(events);
@@ -22,7 +23,7 @@ function ListView(props) {
         const eventDay = parseInt(object.day, 10);
         const eventMonth = parseInt(object.month, 10);
 
-        if (prevMonth !== eventMonth) {
+        if (eventMonth !== prevMonth || (eventDay < prevDay)) {
           headline = (
             <h3 className="date">
               <span className="month">{MONTHS[object.month - 1]}</span>
@@ -40,6 +41,7 @@ function ListView(props) {
           headline = null;
         }
 
+        prevDay = eventDay;
         prevMonth = eventMonth;
 
         return (

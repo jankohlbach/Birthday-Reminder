@@ -22,11 +22,14 @@ const sortList = (list) => {
     return (month === currentMonth && day >= currentDay) || month > currentMonth;
   });
 
-  const nextYear = list.slice(0, index);
-  list.splice(0, index);
-  nextYear.forEach((element) => {
-    list.push(element);
-  });
+  if (index !== -1) {
+    let nextYear = [];
+    nextYear = list.slice(0, index);
+    list.splice(0, index);
+    nextYear.forEach((element) => {
+      list.push(element);
+    });
+  }
 };
 
 export default sortList;
