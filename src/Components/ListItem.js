@@ -15,6 +15,8 @@ function ListItem(props) {
     name,
     info,
     hash,
+    editEvent,
+    deleteEvent,
   } = props;
 
   const eventDay = parseInt(day, 10);
@@ -32,6 +34,18 @@ function ListItem(props) {
     ageText = `age: ${CURRENT_YEAR - year}`;
   }
 
+  const editItem = (e) => {
+    const button = e.target;
+    const hashToChange = button.parentNode.parentNode.id;
+    editEvent(hashToChange);
+  };
+
+  const deleteItem = (e) => {
+    const button = e.target;
+    const hashToDelete = button.parentNode.parentNode.id;
+    deleteEvent(hashToDelete);
+  };
+
   return (
     <div id={hash} className={`list-item${eventDay === CURRENT_DAY && eventMonth === CURRENT_MONTH ? ' today' : ''}`}>
       <span className="day">{day}</span>
@@ -40,8 +54,8 @@ function ListItem(props) {
         {year && <span className="age">{ageText}</span>}
       </div>
       <div className="buttons">
-        <Button name="edit" />
-        <Button name="delete" />
+        <Button name="edit" handleClick={editItem} />
+        <Button name="delete" handleClick={deleteItem} />
       </div>
     </div>
   );
@@ -54,6 +68,8 @@ ListItem.propTypes = {
   name: PropTypes.string.isRequired,
   info: PropTypes.string.isRequired,
   hash: PropTypes.string.isRequired,
+  editEvent: PropTypes.func.isRequired,
+  deleteEvent: PropTypes.func.isRequired,
 };
 
 export default ListItem;

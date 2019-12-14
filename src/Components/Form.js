@@ -20,6 +20,25 @@ class Form extends React.Component {
     this.initialState = this.state;
   }
 
+  componentDidUpdate = (prevProps, prevState) => {
+    const { formState, selectedEvent } = this.props;
+
+    if (formState === 'change' && prevState.hash !== selectedEvent.hash) {
+      this.setChangeState(selectedEvent);
+    }
+  };
+
+  setChangeState = (selectedEvent) => {
+    this.setState({
+      day: selectedEvent.day,
+      month: selectedEvent.month,
+      year: selectedEvent.year,
+      name: selectedEvent.name,
+      info: selectedEvent.info,
+      hash: selectedEvent.hash,
+    });
+  };
+
   handleNameChange = (name) => { this.setState({ name }); };
 
   handleInfoChange = (info) => { this.setState({ info }); };
@@ -38,14 +57,21 @@ class Form extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.setState({
-      hash: generateHash(),
-    }, () => {
-      const { addEvent } = this.props;
+    const { addEvent, formState } = this.props;
+
+    const submitHandler = () => {
       addEvent(this.state);
       this.setState(this.initialState);
       resetOptions();
-    });
+    };
+
+    if (formState === 'change') {
+      submitHandler();
+    } else {
+      this.setState({
+        hash: generateHash(),
+      }, submitHandler);
+    }
   }
 
   render() {
@@ -57,6 +83,18 @@ class Form extends React.Component {
       info,
     } = this.state;
 
+    const { formState } = this.props;
+
+    let content = {
+      buttonText: 'Add',
+    };
+
+    if (formState === 'change') {
+      content = {
+        buttonText: 'Change',
+      };
+    }
+
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="date">
@@ -66,7 +104,7 @@ class Form extends React.Component {
         </div>
         <Input name="name" value={name} onInputChange={this.handleNameChange} placeholder="Name" required />
         <Input name="info" value={info} onInputChange={this.handleInfoChange} placeholder="Additional Info" />
-        <button type="submit">Add</button>
+        <button type="submit">{content.buttonText}</button>
       </form>
     );
   }
@@ -74,6 +112,15 @@ class Form extends React.Component {
 
 Form.propTypes = {
   addEvent: PropTypes.func.isRequired,
+  formState: PropTypes.string.isRequired,
+  selectedEvent: PropTypes.shape({
+    day: PropTypes.string,
+    month: PropTypes.string,
+    year: PropTypes.string,
+    name: PropTypes.string,
+    info: PropTypes.string,
+    hash: PropTypes.string,
+  }).isRequired,
 };
 
 export default Form;
