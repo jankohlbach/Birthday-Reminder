@@ -64,10 +64,26 @@
   }
 
   &.today {
-    transform: scale(1.07);
+    transform: scale(1.06);
 
     .age {
       font-weight: $font-weight-bold;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-small + 1px) {
+  .list-item {
+    &.today {
+      transform: scale(1.04);
+    }
+  }
+}
+
+@media (min-width: $breakpoint-medium + 1px) {
+  .list-item {
+    &.today {
+      transform: scale(1.02);
     }
   }
 }
