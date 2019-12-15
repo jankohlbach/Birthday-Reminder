@@ -102,7 +102,7 @@ class Form extends React.Component {
           <Select name="month" value={month} onSelectChange={this.handleMonthChange} options={months} required />
           <Select name="year" value={year} onSelectChange={this.handleYearChange} options={years} />
         </div>
-        <Input name="name" value={name} onInputChange={this.handleNameChange} placeholder="Name" required />
+        <Input name="name" value={name} onInputChange={this.handleNameChange} placeholder="Name or Occasion" required />
         <Input name="info" value={info} onInputChange={this.handleInfoChange} placeholder="Additional Info" />
         <button type="submit">{content.buttonText}</button>
       </form>

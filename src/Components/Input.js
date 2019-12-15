@@ -17,6 +17,7 @@ class Input extends React.Component {
 
     return (
       <div className={`input ${name}`}>
+        <label htmlFor={name}>{placeholder}</label>
         <input type="text" id={name} name={name} value={value} onChange={this.handleChange} placeholder={placeholder} required={required} />
       </div>
     );

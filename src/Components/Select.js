@@ -17,6 +17,7 @@ class Select extends React.Component {
 
     return (
       <div className="select-wrapper">
+        <label htmlFor={name}>{name}</label>
         <select
           id={name}
           name={name}
