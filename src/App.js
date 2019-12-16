@@ -15,7 +15,9 @@ class App extends React.Component {
       formState: 'add',
       selectedEvent: {},
     };
+  }
 
+  componentDidMount() {
     initDB();
     this.getCache();
   }
