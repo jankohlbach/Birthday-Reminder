@@ -5,6 +5,16 @@ All notable changes to the "b-reminded" pwa will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+## [2.0.1] - 2019-12-23
+### Added
+- add imprint and privacy policy to stay more legal
+  - implement react router for that
+
+### Changed
+
+### Removed
+
+
 ## [2.0.0] - 2019-12-15
 ### Added
 

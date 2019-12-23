@@ -1,10 +1,33 @@
 footer {
-  padding: 1.6rem 0;
+  padding: 1rem 0;
   margin-top: 1.6rem;
   background-color: $color-secondary-darker;
   text-align: center;
 
   p {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
+  }
+
+  nav {
+    margin-bottom: .8rem;
+
+    ul {
+      display: flex;
+      justify-content: center;
+
+      li {
+        &:first-child {
+          margin-right: 7rem;
+        }
+
+        &:nth-child(2) {
+          margin-right: 2rem;
+        }
+
+        a {
+          font-size: 1.8rem;
+        }
+      }
+    }
   }
 }

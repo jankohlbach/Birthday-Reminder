@@ -1,11 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ContentWrap from './ContentWrap';
 
 function Header() {
   return (
     <header>
       <ContentWrap>
-        <h1>b-reminded</h1>
+        <Link to="/">
+          <h1>b-reminded</h1>
+        </Link>
       </ContentWrap>
     </header>
   );
