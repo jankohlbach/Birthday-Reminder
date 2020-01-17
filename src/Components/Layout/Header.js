@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ContentWrap from './ContentWrap';
 
-function Header() {
+export default function Header() {
   return (
     <header>
       <ContentWrap>
@@ -13,5 +13,3 @@ function Header() {
     </header>
   );
 }
-
-export default Header;

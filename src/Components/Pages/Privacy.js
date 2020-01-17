@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Imprint() {
+export default function Imprint() {
   return (
     <div className="privacy">
       <h2>Privacy Policy</h2>
@@ -148,5 +148,3 @@ function Imprint() {
     </div>
   );
 }
-
-export default Imprint;

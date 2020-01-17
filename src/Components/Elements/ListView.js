@@ -9,7 +9,7 @@ import {
   CURRENT_YEAR,
 } from '../../assets/constants';
 
-function ListView(props) {
+export default function ListView(props) {
   const { events, editEvent, deleteEvent } = props;
   let headline;
   let prevDay = null;
@@ -69,5 +69,3 @@ ListView.propTypes = {
   editEvent: PropTypes.func.isRequired,
   deleteEvent: PropTypes.func.isRequired,
 };
-
-export default ListView;

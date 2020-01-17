@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ContentWrap from './ContentWrap';
 
-function Footer() {
+export default function Footer() {
   return (
     <footer>
       <ContentWrap>
@@ -27,5 +27,3 @@ function Footer() {
     </footer>
   );
 }
-
-export default Footer;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Imprint() {
+export default function Imprint() {
   return (
     <>
       <h2>Legal Notice</h2>
@@ -24,5 +24,3 @@ function Imprint() {
     </>
   );
 }
-
-export default Imprint;

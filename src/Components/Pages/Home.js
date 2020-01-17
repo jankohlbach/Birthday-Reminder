@@ -4,7 +4,7 @@ import ListView from '../Elements/ListView';
 import scrollToTop from '../../assets/scrollToTop';
 import { initDB, addToCache, removeFromCache } from '../../assets/database';
 
-class Home extends React.Component {
+export default class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -86,16 +86,15 @@ class Home extends React.Component {
 
   render() {
     const { events, formState, selectedEvent } = this.state;
-    let headline = 'Add new entry';
-
-    if (formState === 'change') {
-      headline = 'Change entry';
-    }
 
     return (
       <>
-        <h2>{headline}</h2>
-        <Form addEvent={this.addEvent} formState={formState} selectedEvent={selectedEvent} />
+        <h2>{formState === 'add' ? 'Add new entry' : 'Change entry'}</h2>
+        <Form
+          addEvent={this.addEvent}
+          formState={formState}
+          selectedEvent={selectedEvent}
+        />
         <ListView
           events={events}
           editEvent={this.editEvent}
@@ -105,5 +104,3 @@ class Home extends React.Component {
     );
   }
 }
-
-export default Home;

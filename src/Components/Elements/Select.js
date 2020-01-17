@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class Select extends React.Component {
+export default class Select extends React.Component {
   handleChange = (e) => {
     const { onSelectChange } = this.props;
     onSelectChange(e.target.value);
@@ -43,5 +43,3 @@ Select.propTypes = {
 Select.defaultProps = {
   required: false,
 };
-
-export default Select;

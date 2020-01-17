@@ -7,7 +7,7 @@ import {
   CURRENT_YEAR,
 } from '../../assets/constants';
 
-function ListItem(props) {
+export default function ListItem(props) {
   const {
     day,
     month,
@@ -71,5 +71,3 @@ ListItem.propTypes = {
   editEvent: PropTypes.func.isRequired,
   deleteEvent: PropTypes.func.isRequired,
 };
-
-export default ListItem;

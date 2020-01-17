@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class Input extends React.Component {
+export default class Input extends React.Component {
   handleChange = (e) => {
     const { onInputChange } = this.props;
     onInputChange(e.target.value);
@@ -18,7 +18,15 @@ class Input extends React.Component {
     return (
       <div className={`input ${name}`}>
         <label htmlFor={name}>{placeholder}</label>
-        <input type="text" id={name} name={name} value={value} onChange={this.handleChange} placeholder={placeholder} required={required} />
+        <input
+          type="text"
+          id={name}
+          name={name}
+          value={value}
+          onChange={this.handleChange}
+          placeholder={placeholder}
+          required={required}
+        />
       </div>
     );
   }
@@ -35,5 +43,3 @@ Input.propTypes = {
 Input.defaultProps = {
   required: false,
 };
-
-export default Input;

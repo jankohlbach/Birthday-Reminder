@@ -6,7 +6,7 @@ import generateHash from '../../assets/generateHash';
 import { days, months, years } from '../../assets/selectOptions';
 import { validateDay, validateMonth, resetOptions } from '../../assets/optionFunctions';
 
-class Form extends React.Component {
+export default class Form extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -85,26 +85,44 @@ class Form extends React.Component {
 
     const { formState } = this.props;
 
-    let content = {
-      buttonText: 'Add',
-    };
-
-    if (formState === 'change') {
-      content = {
-        buttonText: 'Change',
-      };
-    }
-
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="date">
-          <Select name="day" value={day} onSelectChange={this.handleDayChange} options={days} required />
-          <Select name="month" value={month} onSelectChange={this.handleMonthChange} options={months} required />
-          <Select name="year" value={year} onSelectChange={this.handleYearChange} options={years} />
+          <Select
+            name="day"
+            value={day}
+            onSelectChange={this.handleDayChange}
+            options={days}
+            required
+          />
+          <Select
+            name="month"
+            value={month}
+            onSelectChange={this.handleMonthChange}
+            options={months}
+            required
+          />
+          <Select
+            name="year"
+            value={year}
+            onSelectChange={this.handleYearChange}
+            options={years}
+          />
         </div>
-        <Input name="name" value={name} onInputChange={this.handleNameChange} placeholder="Name or Occasion" required />
-        <Input name="info" value={info} onInputChange={this.handleInfoChange} placeholder="Additional Info" />
-        <button type="submit">{content.buttonText}</button>
+        <Input
+          name="name"
+          value={name}
+          onInputChange={this.handleNameChange}
+          placeholder="Name or Occasion"
+          required
+        />
+        <Input
+          name="info"
+          value={info}
+          onInputChange={this.handleInfoChange}
+          placeholder="Additional Info"
+        />
+        <button type="submit">{formState === 'add' ? 'Add' : 'Change'}</button>
       </form>
     );
   }
@@ -122,5 +140,3 @@ Form.propTypes = {
     hash: PropTypes.string,
   }).isRequired,
 };
-
-export default Form;
