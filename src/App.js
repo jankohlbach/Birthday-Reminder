@@ -4,12 +4,12 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
-import Home from './Home';
-import Imprint from './Imprint';
-import Privacy from './Privacy';
-import ContentWrap from './Layout/ContentWrap';
-import Header from './Layout/Header';
-import Footer from './Layout/Footer';
+import Home from './Components/Pages/Home';
+import Imprint from './Components/Pages/Imprint';
+import Privacy from './Components/Pages/Privacy';
+import ContentWrap from './Components/Layout/ContentWrap';
+import Header from './Components/Layout/Header';
+import Footer from './Components/Layout/Footer';
 
 export default function App() {
   return (

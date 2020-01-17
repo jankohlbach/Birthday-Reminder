@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Select from './Select';
 import Input from './Input';
-import generateHash from '../assets/generateHash';
-import { days, months, years } from '../assets/selectOptions';
-import { validateDay, validateMonth, resetOptions } from '../assets/optionFunctions';
+import generateHash from '../../assets/generateHash';
+import { days, months, years } from '../../assets/selectOptions';
+import { validateDay, validateMonth, resetOptions } from '../../assets/optionFunctions';
 
 class Form extends React.Component {
   constructor(props) {

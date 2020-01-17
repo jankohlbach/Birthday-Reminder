@@ -1,8 +1,8 @@
 import React from 'react';
-import Form from './Components/Form';
-import ListView from './Components/ListView';
-import scrollToTop from './assets/scrollToTop';
-import { initDB, addToCache, removeFromCache } from './assets/database';
+import Form from '../Elements/Form';
+import ListView from '../Elements/ListView';
+import scrollToTop from '../../assets/scrollToTop';
+import { initDB, addToCache, removeFromCache } from '../../assets/database';
 
 class Home extends React.Component {
   constructor(props) {
