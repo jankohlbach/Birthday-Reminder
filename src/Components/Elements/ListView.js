@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ListItem from './ListItem';
-import sortList from '../../assets/sortList';
+import sortList from '../../helpers/sortList';
 import {
   MONTHS,
   CURRENT_DAY,
   CURRENT_MONTH,
   CURRENT_YEAR,
-} from '../../assets/constants';
+} from '../../constants/months';
 
 export default function ListView(props) {
   const { events, editEvent, deleteEvent } = props;

@@ -5,7 +5,7 @@ import {
   CURRENT_DAY,
   CURRENT_MONTH,
   CURRENT_YEAR,
-} from '../../assets/constants';
+} from '../../constants/months';
 
 export default function ListItem(props) {
   const {

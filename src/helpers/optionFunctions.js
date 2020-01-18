@@ -1,4 +1,4 @@
-import { MONTHS_30, MONTHS_31 } from './constants';
+import { MONTHS_30, MONTHS_31 } from '../constants/months';
 
 const resetDayOptions = () => {
   const optionsDays = document.querySelectorAll('select#day option');
