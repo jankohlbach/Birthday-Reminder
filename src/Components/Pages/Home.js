@@ -1,4 +1,5 @@
 import React from 'react';
+import DeleteModal from '../elements/DeleteModal';
 import Form from '../elements/Form';
 import ListView from '../elements/ListView';
 import scrollToTop from '../../helpers/scrollToTop';
@@ -11,6 +12,8 @@ export default class Home extends React.Component {
       events: [],
       formState: 'add',
       selectedEvent: {},
+      deleteModal: false,
+      hashToDelete: '',
     };
   }
 
@@ -57,7 +60,26 @@ export default class Home extends React.Component {
     });
   }
 
-  deleteEvent = (hashToDelete) => {
+  handleModal = (value) => {
+    if (value === 'yes') this.deleteEvent();
+    this.setState({
+      deleteModal: false,
+      hashToDelete: '',
+    });
+  }
+
+  askForDelete = (hashToDelete) => {
+    scrollToTop();
+
+    this.setState({
+      deleteModal: true,
+      hashToDelete,
+    });
+  };
+
+  deleteEvent = () => {
+    const { hashToDelete } = this.state;
+
     if (hashToDelete !== '') {
       const { formState } = this.state;
 
@@ -69,6 +91,7 @@ export default class Home extends React.Component {
       events.splice(indexToDelete, 1);
       this.setState({
         events,
+        hashToDelete: '',
       });
     }
   }
@@ -85,10 +108,16 @@ export default class Home extends React.Component {
   }
 
   render() {
-    const { events, formState, selectedEvent } = this.state;
+    const {
+      events,
+      formState,
+      selectedEvent,
+      deleteModal,
+    } = this.state;
 
     return (
       <>
+        {deleteModal && <DeleteModal handleModal={this.handleModal} />}
         <h2>{formState === 'add' ? 'Add new entry' : 'Change entry'}</h2>
         <Form
           addEvent={this.addEvent}
@@ -98,7 +127,7 @@ export default class Home extends React.Component {
         <ListView
           events={events}
           editEvent={this.editEvent}
-          deleteEvent={this.deleteEvent}
+          askForDelete={this.askForDelete}
         />
       </>
     );

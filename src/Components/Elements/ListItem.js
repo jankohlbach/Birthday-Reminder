@@ -16,7 +16,7 @@ export default function ListItem(props) {
     info,
     hash,
     editEvent,
-    deleteEvent,
+    askForDelete,
   } = props;
 
   const eventDay = parseInt(day, 10);
@@ -43,7 +43,7 @@ export default function ListItem(props) {
   const deleteItem = (e) => {
     const button = e.target;
     const hashToDelete = button.parentNode.parentNode.id;
-    deleteEvent(hashToDelete);
+    askForDelete(hashToDelete);
   };
 
   return (
@@ -69,5 +69,5 @@ ListItem.propTypes = {
   info: PropTypes.string.isRequired,
   hash: PropTypes.string.isRequired,
   editEvent: PropTypes.func.isRequired,
-  deleteEvent: PropTypes.func.isRequired,
+  askForDelete: PropTypes.func.isRequired,
 };

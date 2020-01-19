@@ -10,7 +10,7 @@ import {
 } from '../../constants/months';
 
 export default function ListView(props) {
-  const { events, editEvent, deleteEvent } = props;
+  const { events, editEvent, askForDelete } = props;
   let headline;
   let prevDay = null;
   let prevMonth = null;
@@ -55,7 +55,7 @@ export default function ListView(props) {
               info={object.info}
               hash={object.hash}
               editEvent={editEvent}
-              deleteEvent={deleteEvent}
+              askForDelete={askForDelete}
             />
           </React.Fragment>
         );
@@ -67,5 +67,5 @@ export default function ListView(props) {
 ListView.propTypes = {
   events: PropTypes.arrayOf(PropTypes.object).isRequired,
   editEvent: PropTypes.func.isRequired,
-  deleteEvent: PropTypes.func.isRequired,
+  askForDelete: PropTypes.func.isRequired,
 };
