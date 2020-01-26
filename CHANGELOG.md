@@ -5,6 +5,16 @@ All notable changes to the "b-reminded" pwa will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
+## [2.0.4] - 2020-01-26
+### Added
+
+### Changed
+- fix bug in current day highlighting
+  - fix 'turns: xx' applaying to all months on current day
+
+### Removed
+
+
 ## [2.0.3] - 2020-01-19
 ### Added
 - add confirmation modal before deleting entries

@@ -25,7 +25,7 @@ export default function ListItem(props) {
   let ageText;
 
   if (eventMonth > CURRENT_MONTH || (eventMonth === CURRENT_MONTH && eventDay >= CURRENT_DAY)) {
-    if (eventDay === CURRENT_DAY) {
+    if (eventDay === CURRENT_DAY && eventMonth === CURRENT_MONTH) {
       ageText = `turns: ${CURRENT_YEAR - year}`;
     } else {
       ageText = `age: ${CURRENT_YEAR - year - 1}`;
