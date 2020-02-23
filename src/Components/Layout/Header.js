@@ -7,7 +7,7 @@ export default function Header() {
   const handleClick = (e) => {
     if (Notification.permission === 'denied') {
       // eslint-disable-next-line no-alert
-      alert('Please allow notifications first');
+      alert('Please allow notifications first. Don\'t clear your cache, just go to site settings and allow notifications.');
       return;
     }
 
