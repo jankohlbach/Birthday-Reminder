@@ -5,6 +5,11 @@ header {
   padding: 1.2rem 0;
   background-color: $color-secondary-darker;
 
+  .content-wrap {
+    display: flex;
+    justify-content: space-between;
+  }
+
   h1 {
     font-size: 2.4rem;
 
@@ -16,6 +21,64 @@ header {
       margin-top: .3rem;
       background-color: $color-primary;
       transform: translateX(-.5rem);
+    }
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+
+    &::before {
+      content: url('./res/img/icon-bell.svg');
+      display: inline-block;
+      width: 3rem;
+      height: 3rem;
+      transform-origin: 50% 50%;
+    }
+
+    @keyframes wiggle {
+      0% {
+        transform: translateX(0%);
+      }
+
+      .1% {
+        transform: translateX(-10px) rotate(6deg);
+      }
+
+      .2% {
+        transform: translateX(5px) rotate(-6deg);
+      }
+
+      .3% {
+        transform: translateX(-5px) rotate(3.6deg);
+      }
+
+      .4% {
+        transform: translateX(3px) rotate(-2.4deg);
+      }
+
+      .5% {
+        transform: translateX(-2px) rotate(1.2deg);
+      }
+
+      .6% {
+        transform: translateX(0) rotate(0);
+      }
+    }
+
+    &[data-checked='false'] {
+      &::before {
+        content: url('./res/img/icon-bell.svg');
+        animation: wiggle 120s ease 0s infinite normal both;
+      }
+    }
+
+    &[data-checked='true'] {
+      &::before {
+        content: url('./res/img/icon-bell-active.svg');
+      }
     }
   }
 }
